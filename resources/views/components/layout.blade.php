@@ -15,7 +15,7 @@
 </head>
 
 <body
-    class="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-y-auto overflow-x-hidden bg-white">
+    class="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-y-auto overflow-x-hidden bg-white scroll-smooth">
     <header
         class="absolute left-1/2 -translate-x-1/2 p-[3.42rem] top-0 w-full max-w-full flex items-center justify-between z-[99999]">
         <a href="/" class="{{ request()->is('login') ? 'w-[17.29rem]' : 'w-[9.3rem]' }}">
@@ -25,11 +25,11 @@
                     fill="#191D21" />
             </svg>
         </a>
-        <ul class="flex items-center gap-9 raleway-bold text-2xl leading-10 cursor-pointer">
+        <ul class="flex items-center gap-9 raleway-bold text-3xl leading-10 cursor-pointer">
             <li><a class="hover:text-[#656F77] transition-all duration-300" href="/">Главная</a></li>
             <li><a class="hover:text-[#656F77] transition-all duration-300" href="/">Каталог</a></li>
             <li><a class="hover:text-[#656F77] transition-all duration-300" href="/">О нас</a></li>
-            <li><a class="hover:text-[#656F77] transition-all duration-300" href="/">Аккаунт</a></li>
+            <li><a class="hover:text-[#656F77] transition-all duration-300" href="/users">Дашборд</a></li>
             <li><a class="hover:text-[#656F77] transition-all duration-300" href="/">FAQ</a></li>
         </ul>
 
@@ -73,7 +73,7 @@
     </header>
     {{ $slot }}
     <footer
-        class="w-full bg-white h-[21.6rem] flex items-center justify-center gap-[42.05rem] {{ request()->is('login') || request()->is('signup') ? 'opacity-0 unvisible pointer-events-none select-none' : '' }}">
+        class="w-full bg-white h-[21.6rem] flex items-center justify-center gap-[42.05rem] {{ request()->is('login') || request()->is('signup') || request()->is('users/create') ? 'opacity-0 unvisible pointer-events-none select-none' : '' }}">
         <a href="/">
             <svg class="w-[6.67rem] h-[9.07rem]" viewBox="0 0 113 142" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
