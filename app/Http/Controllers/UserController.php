@@ -6,10 +6,20 @@ use Illuminate\Http\Request;
 use App\Models\User;
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::all();
-        return view('users.index', compact('users'));
+        $search = $request->input('search');
+    
+        $users = User::query();
+    
+        if ($search) {
+            $users = $users->where('name', 'like', "%{$search}%")
+                           ->orWhere('email', 'like', "%{$search}%");
+        }
+    
+        $users = $users->get();
+    
+        return view('users.index', compact('users', 'search'));
     }
 
     public function create()

@@ -25,20 +25,20 @@
                     fill="#191D21" />
             </svg>
         </a>
-        <ul class="flex items-center gap-9 raleway-bold text-3xl leading-10 cursor-pointer">
-            <li><a class="hover:text-[#656F77] transition-all duration-300" href="/">Главная</a></li>
-            <li><a class="hover:text-[#656F77] transition-all duration-300" href="/">Каталог</a></li>
-            <li><a class="hover:text-[#656F77] transition-all duration-300" href="/">О нас</a></li>
-            <li><a class="hover:text-[#656F77] transition-all duration-300" href="/users">Дашборд</a></li>
-            <li><a class="hover:text-[#656F77] transition-all duration-300" href="/">FAQ</a></li>
-        </ul>
+        @auth
+            <ul class="items-center gap-9 raleway-bold text-3xl leading-10 cursor-pointer hidden lg:flex">
+                <li><a class="hover:text-[#656F77] transition-all duration-300" href="/">Главная</a></li>
+                <li><a class="hover:text-[#656F77] transition-all duration-300" href="/books">Каталог</a></li>
+                <li><a href="{{ url('/articles') }}" class="hover:text-[#656F77] transition-all duration-300">Статьи</a></li>
+                <li><a class="hover:text-[#656F77] transition-all duration-300" href="/users">Пользователи</a></li>
+                <li><a class="hover:text-[#656F77] transition-all duration-300" href="/">FAQ</a></li>
+            </ul>
+        @endauth
 
         @auth
-            {{-- @if (auth()->user()->role === 'admin')
-            <p>Вы администратор.</p>
-            @endif --}}
             <div class="flex items-center gap-10">
-                <a href="/user/{{ auth()->user()->id }}" class="rounded-full bg-white w-[3rem] h-[3rem] p-3 flex items-center justify-center">
+                <a href="/user/{{ auth()->user()->id }}"
+                    class="rounded-full bg-white w-[3rem] h-[3rem] p-3 flex items-center justify-center">
                     <svg class="w-[2.05rem] h-[2.05rem]" viewBox="0 0 19 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M17.5215 19.9404V17.9404C17.5215 16.8796 17.1001 15.8621 16.3499 15.112C15.5998 14.3619 14.5824 13.9404 13.5215 13.9404H5.52148C4.46062 13.9404 3.4432 14.3619 2.69306 15.112C1.94291 15.8621 1.52148 16.8796 1.52148 17.9404V19.9404"
@@ -51,7 +51,8 @@
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" class="hover:opacity-50 transition-all duration-300 cursor-pointer">
-                        <svg class="w-[1.71rem] h-[1.71rem]" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-[1.71rem] h-[1.71rem]" viewBox="0 0 21 21" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M7.01953 19.7246H3.01953C2.4891 19.7246 1.98039 19.5139 1.60532 19.1388C1.23024 18.7637 1.01953 18.255 1.01953 17.7246V3.72461C1.01953 3.19418 1.23024 2.68547 1.60532 2.3104C1.98039 1.93532 2.4891 1.72461 3.01953 1.72461H7.01953"
                                 stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -73,30 +74,47 @@
     </header>
     {{ $slot }}
     <footer
-        class="w-full bg-white h-[21.6rem] flex items-center justify-center gap-[42.05rem] {{ request()->is('login') || request()->is('signup') || request()->is('users/create') ? 'opacity-0 unvisible pointer-events-none select-none' : '' }}">
+        class="w-full bg-white h-[16.6rem] min-h-fit adaptive items-center justify-center gap-[1.71rem] lg:gap-[42.05rem] p-10 {{ request()->is('login') || request()->is('signup') || request()->is('users/create') || request()->is('books/create') || preg_match('/^users\/\d+\/edit$/', request()->path()) ? 'opacity-0 unvisible pointer-events-none select-none' : '' }}">
         <a href="/">
-            <svg class="w-[6.67rem] h-[9.07rem]" viewBox="0 0 113 142" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="w-[4.67rem] h-[6rem]" viewBox="0 0 113 142" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
                     d="M80.5126 50.8488C85.0471 50.8488 89.1978 49.2052 92.4013 46.4811C95.4402 52.4277 101.626 56.499 108.763 56.499C110.221 56.499 111.64 56.329 113 56.0076V135.25C113 138.564 110.314 141.25 107 141.25H6C2.68629 141.25 0 138.564 0 135.25V6C0 2.68629 2.68629 0 6 0H50.3115C47.1457 3.29926 45.2 7.77841 45.2 12.712C45.2 22.3976 52.6988 30.3317 62.2073 31.0253C62.1694 31.5073 62.1501 31.9946 62.1501 32.4863C62.1501 42.6277 70.3712 50.8488 80.5126 50.8488Z"
                     fill="#191D21" />
             </svg>
         </a>
-        <div class="flex items-end gap-[31.59rem]">
-            <div class="flex items-center gap-[2.99rem] text-[1.71rem] poppins-medium">
-                <ul>
-                    <li><a href="/" class="hover:text-[#656F77] transition-all duration-300">Home</a></li>
-                    <li><a href="/" class="hover:text-[#656F77] transition-all duration-300">Catalog</a></li>
-                    <li><a href="/" class="hover:text-[#656F77] transition-all duration-300">About Us</a></li>
-                    <li><a href="/" class="hover:text-[#656F77] transition-all duration-300">Catalog</a></li>
-                </ul>
-                <ul>
-                    <li><a href="/" class="hover:text-[#656F77] transition-all duration-300">Account</a></li>
-                    <li><a href="/" class="hover:text-[#656F77] transition-all duration-300">FAQ</a></li>
-                    <li><a href="/" class="hover:text-[#656F77] transition-all duration-300">TOS</a></li>
-                    <li><a href="/" class="hover:text-[#656F77] transition-all duration-300">PP</a></li>
+        <div class="adaptive items-center lg:items-start gap-[1.71rem] lg:gap-[31.59rem]">
+            <div class="flex items-center gap-[1.71rem] lg:gap-[2.99rem] text-[1.71rem] poppins-medium">
+                @auth
+                    <ul class="flex flex-col items-center">
+                        <li><a href="{{ url('/') }}"
+                                class="hover:text-[#656F77] transition-all duration-300 poppins-semibold">Главная</a></li>
+                        <li><a href="{{ url('/books') }}"
+                                class="hover:text-[#656F77] transition-all duration-300 poppins-semibold">Каталог</a></li>
+                        @if(auth()->user() && auth()->user()->role === 'Администратор')
+                            <li><a href="{{ url('/articles') }}"
+                                    class="hover:text-[#656F77] transition-all duration-300 poppins-semibold">Статьи</a></li>
+                        @else
+                            <li><a href="{{ url("user/" . auth()->user()->id) }}"
+                                    class="hover:text-[#656F77] transition-all duration-300 poppins-semibold">Аккаунт</a> </li>
+                        @endif
+                        <li><a href="{{ url('/users') }}"
+                                class="hover:text-[#656F77] transition-all duration-300 poppins-semibold">Пользователи</a>
+                        </li>
+                    </ul>
+                @endauth
+                <ul class="flex flex-col items-center">
+                    <li><a href="{{ url('/about') }}"
+                            class="hover:text-[#656F77] transition-all duration-300 poppins-semibold">О нас</a></li>
+                    <li><a href="{{ url('/faq') }}"
+                            class="hover:text-[#656F77] transition-all duration-300 poppins-semibold">FAQ</a></li>
+                    <li><a href="{{ url('/tos') }}"
+                            class="hover:text-[#656F77] transition-all duration-300 poppins-semibold">TOS</a></li>
+                    <li><a href="{{ url('/pp') }}"
+                            class="hover:text-[#656F77] transition-all duration-300 poppins-semibold">PP</a></li>
                 </ul>
             </div>
-            <div class="flex items-center gap-10">
+
+            <div class="flex items-center gap-[1.71rem] lg:gap-10">
                 <a href="" class="hover:opacity-50 transition-all duration-300">
                     <svg class="w-10 h-10" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path

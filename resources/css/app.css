@@ -97,6 +97,10 @@
     font-style: normal;
 }
 
+.blur {
+    background: rgba(255, 255, 255, 0.3);
+}
+
 body {
     font-family: "Poppins", sans-serif;
     color: #191D21;
@@ -212,4 +216,16 @@ html {
 .hiddenScroll {
     -ms-overflow-style: none !important;
     scrollbar-width: none !important;
+}
+
+.adaptive {
+    display: flex;
+    flex-direction: column !important;
+}
+
+@media only screen and (min-width: 850px) {
+    .adaptive {
+        display: flex;
+        flex-direction: row !important;
+    }
 }

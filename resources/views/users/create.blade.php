@@ -1,8 +1,8 @@
 <x-layout>
     <section
-        class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 bg-[#DED2F9] h-fit w-fit px-[3.68rem] pt-[4.88rem] pb-8 flex flex-col gap-[2.91rem] max-h-[100dvh] rounded-[1.71rem]">
-        <a href="{{ route('users.index') }}">Назад</a>
-        <img src="{{ asset('/img/auth/signup.png') }}" alt="signup" class="max-w-[32.87rem]">
+        class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 bg-[#FFDBF5] h-fit w-fit px-[3.68rem] pt-[4.88rem] pb-8 flex flex-col gap-[2.91rem] max-h-[100dvh] rounded-[1.71rem]">
+        <a href="{{ route('users.index') }}" class="rounded-sm border border-[#191D21] border-solid w-fit text-[1.3rem] px-3 py-2">Назад</a>
+        <img src="{{ asset('/img/users/create.png') }}" alt="create" class="max-w-[32.87rem]">
         <form method="POST" action="{{ route('users.store') }}" class="flex flex-col gap-4 py-5 px-6">
             @csrf
             <h1 class="poppins-bold text-[2.73rem]">Создать пользователя</h1>
