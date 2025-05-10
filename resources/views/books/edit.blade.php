@@ -1,10 +1,10 @@
 <x-layout>
     <section
-        class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 bg-[#FFDBF5] h-fit w-full m-7 mt-[6rem] px-[3.68rem] pt-[4.88rem] pb-8 flex flex-col gap-[2.91rem] max-h-[100dvh] max-w-[calc(100dvw-15rem)] rounded-[1.71rem]">
+        class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 bg-[#FFDBF5] h-fit w-full m-7 mt-[22rem] lg:mt-[6rem] px-[3.68rem] pt-[4.88rem] pb-8 flex flex-col gap-[2.91rem] lg:max-h-[100dvh] max-w-[calc(100dvw-15rem)] rounded-[1.71rem]">
         <a href="{{ route('books.index') }}"
             class="rounded-sm border border-[#191D21] border-solid text-[1.3rem] w-fit px-3 py-2">Назад</a>
         <div class="flex flex-col gap-[.68rem] w-full">
-            <img src="{{ asset($book->image_url) }}" alt="Current Image" class="w-[12.5rem] h-[18.63rem]">
+            <img src="{{ asset($book->image_url) }}" alt="Current Image" class="w-[12.5rem] h-[18.63rem] flex mx-auto lg:m-0">
         </div>
 
         <form method="POST" action="{{ route('books.update', $book->id) }}" enctype="multipart/form-data"
@@ -13,7 +13,7 @@
             @method('PUT')
             <h1 class="poppins-bold text-[2.73rem]">Редактировать книгу</h1>
 
-            <div class="flex items-center justify-between gap-[1.37rem]">
+            <div class="adaptive items-center justify-between gap-[1.37rem]">
                 <input placeholder="Название книги" type="text" name="title" value="{{ old('title', $book->title) }}"
                     required class="input">
                 <input placeholder="Автор" type="text" name="author" value="{{ old('author', $book->author) }}" required
@@ -22,7 +22,7 @@
                     value="{{ old('publication_year', $book->publication_year) }}" required class="input">
             </div>
 
-            <div class="flex items-center justify-between gap-[1.37rem]">
+            <div class="adaptive items-center justify-between gap-[1.37rem]">
                 <input placeholder="Цена" type="number" step="0.01" name="price"
                     value="{{ old('price', $book->price) }}" required class="input">
                 <input placeholder="Оригинальный язык" type="text" name="original_language"
@@ -39,7 +39,7 @@
 
             </div>
 
-            <div class="flex items-center justify-between gap-[1.37rem]">
+            <div class="adaptive items-center justify-between gap-[1.37rem]">
                 <input placeholder="Скидка (необязательно)" type="number" name="discount"
                     value="{{ old('discount', $book->discount) }}" class="input">
 
@@ -52,7 +52,7 @@
                     class="input resize-none">{{ old('description', $book->description) }}</textarea>
             </div>
 
-            <div class="flex items-center justify-between gap-[1.37rem]">
+            <div class="adaptive items-center justify-between gap-[1.37rem]">
                 <input placeholder="Количество продаж (необязательно)" type="number" name="sales_count"
                     value="{{ old('sales_count', $book->sales_count) }}" class="input">
                 <input placeholder="Общая выручка (необязательно)" type="number" step="0.01" name="total_revenue"

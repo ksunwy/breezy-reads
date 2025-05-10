@@ -1,15 +1,15 @@
 <x-layout>
     <section class="relative flex flex-col gap-[5.65rem] items-center w-full py-[8.98rem] pt-[14rem]">
-        <div class="flex items-center justify-between w-full max-w-[calc(100%-17.97rem)]">
-            <form method="GET" action="{{ route('articles.index') }}" class="relative">
+        <div class="adaptive items-center justify-between gap-[1.71rem] w-full max-w-[calc(100%-17.97rem)]">
+            <form method="GET" action="{{ route('articles.index') }}" class="relative w-full adaptive items-center justify-between gap-[1.71rem]">
                 <img src="{{ asset('/img/icons/search.png') }}" alt="search"
                     class="absolute left-[2.14rem] top-1/2 transform -translate-y-1/2 z-10 w-[1.71rem] h-[1.71rem]" />
                 <input type="search" placeholder="Поиск..." name="search" value="{{ request('search') }}"
-                    class="bg-white border poppins-medium border-solid text-[1.54rem] p-[1.5rem] pl-[5.22rem] border-[#ACB8C2] rounded-[4px] w-[61.1rem] h-[4.28rem]">
+                    class="bg-white border poppins-medium border-solid text-[1.54rem] p-[1.5rem] pl-[5.22rem] border-[#ACB8C2] rounded-[4px] w-full lg:w-[61.1rem] h-[4.28rem]">
             </form>
             @auth
             @if(auth()->user() && auth()->user()->role === 'Администратор')
-                <a href="{{ route('articles.create') }}" class="text-[1.54rem] font-semibold text-white bg-[#191D21] rounded-[4px] px-[1.5rem] py-[1.2rem] transition-all duration-300 hover:bg-white hover:text-[#191D21]">Создать статью</a>
+                <a href="{{ route('articles.create') }}" class="text-[1.54rem] w-full lg:w-fit text-nowrap flex items-center justify-center font-semibold text-white bg-[#191D21] rounded-[4px] px-[1.5rem] py-[1.2rem] transition-all duration-300 hover:bg-white hover:text-[#191D21]">Создать статью</a>
             @else
                 <div class=""></div>
             @endif

@@ -19,7 +19,7 @@
     <header
         class="absolute left-1/2 -translate-x-1/2 p-[3.42rem] top-0 w-full max-w-full flex items-center justify-between z-[99999]">
         <a href="/" class="{{ request()->is('login') ? 'w-[17.29rem]' : 'w-[9.3rem]' }}">
-            <svg width="40" height="50" viewBox="0 0 40 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="w-[3.42rem] h-[3.42rem] lg:w-[5rem] lg:h-[5rem]" viewBox="0 0 40 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
                     d="M28.5 18C30.1052 18 31.5744 17.4182 32.7084 16.4539C33.7842 18.5589 35.9738 20 38.5 20C39.0163 20 39.5185 19.9398 40 19.8261V44C40 47.3137 37.3137 50 34 50H6C2.68629 50 0 47.3137 0 44V6C0 2.68629 2.68629 0 6 0H17.8096C16.6888 1.16789 16 2.75351 16 4.5C16 7.92851 18.6544 10.737 22.0203 10.9826C22.0069 11.1533 22 11.3258 22 11.5C22 15.0899 24.9101 18 28.5 18Z"
                     fill="#191D21" />

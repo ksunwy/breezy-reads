@@ -14,9 +14,8 @@
 </head>
 
 <body class="p-[2.99rem]">
-
     <form method="POST" action="{{ route('articles.update', $article->id) }}" enctype="multipart/form-data"
-        class="relative w-full h-full flex items-center gap-[1.71rem]">
+        class="relative w-full h-full adaptive items-center gap-[1.71rem]">
         @csrf
         @method('PUT')
         <div class="border-2 border-solid border-[#191D21] rounded-[.86rem] w-full h-full min-h-[calc(100dvh-6rem)] flex flex-col gap-[1.71rem] py-[5.99rem] px-[2.91rem]">
@@ -45,12 +44,12 @@
             <textarea name="content" id="content" rows="10" class="resize-none text-[1.54rem] border-2 border-solid border-[#191D21] rounded-sm p-2">{{ old('content', $article->content) }}</textarea>
         </div>
 
-        <div class="absolute bottom-0 left-1/2 -translate-1/2 w-[calc(100%-31rem)] rounded-[.86rem] p-[1.71rem] border-2 border-solid border-[#191D21] bg-[#DED2F9] flex items-center justify-between">
+        <div class="absolute bottom-0 left-1/2 -translate-1/2 w-[calc(100%-3.42rem)] lg:w-[calc(100%-31rem)] rounded-[.86rem] p-[1.71rem] border-2 border-solid border-[#191D21] bg-[#DED2F9] flex items-center justify-between">
             <div class="flex flex-col gap-[.86rem]">
                 <span class="raleway-bold text-[1.71rem]">Режим редактирования</span>
                 <span class="poppins text-[1.37rem]">Нажми на текстовые поля, чтобы их отредактировать</span>
             </div>
-            <div class="flex items-center gap-[1.71rem]">
+            <div class="adaptive items-center gap-[1.71rem]">
                 <a href="{{ route('articles.index') }}" type="submit" class="text-[1.71rem] raleway-bold rounded-sm p-3 px-[1.71rem] hover:bg-[#656F77] hover:text-white transition">Отмена</a>
                 <button type="submit" class="bg-[#191D21] text-white text-[1.71rem] raleway-bold rounded-sm p-3 px-[1.71rem] hover:bg-[#656F77] transition">Сохранить</button>
             </div>

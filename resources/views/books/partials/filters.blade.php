@@ -1,4 +1,4 @@
-<form method="GET" action="{{ route('books.index') }}" class="w-full bg-white shadow max-w-[calc(100%-17.97rem)] -mt-10 rounded-xl p-8 grid grid-cols-2 md:grid-cols-3 gap-6 items-end mb-12">
+<form method="GET" action="{{ route('books.index') }}" class="w-full bg-white shadow lg:max-w-[calc(100%-17.97rem)] -mt-10 rounded-xl p-8 grid grid-cols-2 md:grid-cols-3 gap-6 items-end mb-12">
 
     <div class="flex flex-col">
         <label class="text-[1.3rem] mb-2 font-semibold text-gray-700">Категория</label>
