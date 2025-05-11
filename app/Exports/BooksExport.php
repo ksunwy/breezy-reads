@@ -34,7 +34,7 @@ class BooksExport implements FromCollection, WithHeadings
             'Название',
             'Автор',
             'Год публикации',
-            'Цена ($)',
+            'Цена',
             'Продажи',
         ];
     }
