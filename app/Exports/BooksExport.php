@@ -2,15 +2,30 @@
 
 namespace App\Exports;
 
-use App\Models\Book;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Illuminate\Support\Collection;
 
 class BooksExport implements FromCollection, WithHeadings
 {
+    protected $books;
+
+    public function __construct(Collection $books)
+    {
+        $this->books = $books;
+    }
+
     public function collection()
     {
-        return Book::select('title', 'author', 'publication_year', 'price', 'sales_count')->get();
+        return $this->books->map(function ($book) {
+            return [
+                'title'            => $book->title,
+                'author'           => $book->author,
+                'publication_year' => $book->publication_year,
+                'price'            => $book->price,
+                'sales_count'      => $book->sales_count,
+            ];
+        });
     }
 
     public function headings(): array

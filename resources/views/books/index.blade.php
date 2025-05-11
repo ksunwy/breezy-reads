@@ -1,11 +1,12 @@
 <x-layout>
     <section class="relative flex flex-col gap-[5.65rem] items-center w-full p-3 lg:py-[8.98rem] pt-[14rem]">
-        <div class="adaptive items-center justify-between w-full max-w-[calc(100%-3.42rem)] lg:max-w-[calc(100%-17.97rem)] gap-3">
+        <div
+            class="adaptive items-center justify-between w-full max-w-[calc(100%-3.42rem)] lg:max-w-[calc(100%-17.97rem)] gap-3">
             <form method="GET" action="{{ route('books.index') }}" class="relative w-full">
                 <img src="{{ asset('/img/icons/search.png') }}" alt="search"
-                class="absolute left-[2.14rem] top-1/2 transform -translate-y-1/2 z-10 w-[1.71rem] h-[1.71rem]" />
+                    class="absolute left-[2.14rem] top-1/2 transform -translate-y-1/2 z-10 w-[1.71rem] h-[1.71rem]" />
                 <input type="search" placeholder="Поиск..." name="search" value="{{ request('search') }}"
-                class="bg-white border poppins-medium border-solid text-[1.54rem] p-[1.5rem] pl-[5.22rem] border-[#ACB8C2] rounded-[4px] w-full lg:w-[61.1rem] h-[4.28rem]">
+                    class="bg-white border poppins-medium border-solid text-[1.54rem] p-[1.5rem] pl-[5.22rem] border-[#ACB8C2] rounded-[4px] w-full lg:w-[61.1rem] h-[4.28rem]">
             </form>
             @auth
                 @if(auth()->user() && auth()->user()->role === 'Администратор')
@@ -14,16 +15,21 @@
                             class="text-[1.54rem] font-semibold w-full text-nowrap lg:w-fit flex items-center justify-center text-white bg-[#191D21] rounded-[4px] px-[1.5rem] py-[1.2rem] transition-all duration-300 hover:bg-white hover:text-[#191D21]">
                             Создать книгу
                         </a>
-                        <a href="{{ route('books.report') }}"
-                            class="text-[1.54rem] font-semibold w-full text-nowrap lg:w-fit flex items-center justify-center text-white bg-blue-600 rounded-[4px] px-[1.5rem] py-[1.2rem] transition-all duration-300 hover:bg-white hover:text-blue-600">
-                            Сформировать отчет
-                        </a>
+                        <form method="GET" action="{{ route('books.report') }}">
+                            @foreach(request()->all() as $name => $value)
+                                <input type="hidden" name="{{ $name }}" value="{{ $value }}">
+                            @endforeach
+                            <button type="submit"
+                                class="text-[1.54rem] font-semibold w-full text-nowrap lg:w-fit flex items-center justify-center text-white bg-blue-600 rounded-[4px] px-[1.5rem] py-[1.2rem] transition-all duration-300 hover:bg-white hover:text-blue-600">
+                                Сформировать отчет
+                            </button>
+                        </form>
                     </div>
                 @else
                     <div class=""></div>
                 @endif
             @endauth
-            </div>
+        </div>
         @include('books.partials.filters')
         <div class="flex flex-wrap justify-center lg:justify-between max-w-[calc(100%-17.97rem)] gap-[5.13rem]">
             @if($books->isEmpty())
@@ -41,7 +47,7 @@
                         <img src="{{ $i->image_url }}" alt="{{ $i->title }}" class="w-[12.5rem] h-[18.63rem] flex mx-auto">
                         <div class="flex flex-col gap-[.86rem]">
                             <span class="text-[1.88rem] leading-[110%] poppins-bold text-wrap">{{ $i->title }}</span>
-                            <span class="text-[1.37rem] poppins-bold ">${{ $i->price }}</span>
+                            <span class="text-[1.37rem] poppins-bold ">₽{{ $i->price }}</span>
                         </div>
                         @auth
                             @if(auth()->user() && auth()->user()->role === 'Администратор')
