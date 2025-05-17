@@ -80,7 +80,7 @@
             @foreach ($categories as $i)
             <div class="flex bg-white rounded-2xl min-w-[29.36rem]">
                 <div class="bg-[{{ $i->color }}] rounded-l-2xl w-[13.99rem] h-[10.1rem] flex items-center justify-center">
-                    <img src="{{ $i->image_url }}" alt="{{ $i->name }}">
+                    <img src="{{ $i->image_url }}" alt="{{ $i->name }}" width="65">
                 </div>
                 <div class="flex flex-col gap-2 py-[1.71rem] pl-[1.3rem] pr-2">
                     <span class="poppins-bold text-2xl">{{ $i->name }}</span>

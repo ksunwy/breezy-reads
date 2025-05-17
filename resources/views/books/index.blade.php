@@ -37,7 +37,7 @@
             @else
                 @foreach ($books as $i)
                     <div onclick="window.location='{{ url('/book/' . $i->id) }}'"
-                        class="relative bg-[#FFDBF5] rounded-[1.37rem] py-[1.71rem] px-[2.14rem] flex flex-col gap-[1.71rem] max-w-[19.43rem] w-[19.43rem]">
+                        class="relative bg-[{{ $i->color }}] rounded-[1.37rem] py-[1.71rem] px-[2.14rem] flex flex-col gap-[1.71rem] max-w-[19.43rem] w-[19.43rem]">
                         @if($i->discount != 0)
                             <div
                                 class="absolute -top-[5px] -left-8 bg-[#191D21] text-white poppins-medium text-[1.37rem] px-3 py-2 rounded-[1.37rem]">
@@ -47,7 +47,7 @@
                         <img src="{{ $i->image_url }}" alt="{{ $i->title }}" class="w-[12.5rem] h-[18.63rem] flex mx-auto">
                         <div class="flex flex-col gap-[.86rem]">
                             <span class="text-[1.88rem] leading-[110%] poppins-bold text-wrap">{{ $i->title }}</span>
-                            <span class="text-[1.37rem] poppins-bold ">₽{{ $i->price }}</span>
+                            <span class="text-[1.37rem] poppins-bold text-[#494f53]">₽{{ $i->price }}</span>
                         </div>
                         @auth
                             @if(auth()->user() && auth()->user()->role === 'Администратор')

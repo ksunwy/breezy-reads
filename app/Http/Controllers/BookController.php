@@ -13,7 +13,6 @@ class BookController extends Controller
     private function applyFilters(Request $request)
     {
         $books = Book::query();
-
         if ($request->filled('search')) {
             $search = $request->input('search');
             $books->where(function ($q) use ($search) {
@@ -21,27 +20,21 @@ class BookController extends Controller
                     ->orWhere('author', 'like', "%{$search}%");
             });
         }
-
         if ($request->filled('category')) {
             $books->where('category_id', $request->category);
         }
-
         if ($request->filled('year_from')) {
             $books->where('publication_year', '>=', $request->year_from);
         }
-
         if ($request->filled('year_to')) {
             $books->where('publication_year', '<=', $request->year_to);
         }
-
         if ($request->filled('price_to')) {
             $books->where('price', '<=', $request->price_to);
         }
-
         if ($request->filled('language')) {
             $books->where('original_language', 'like', "%{$request->language}%");
         }
-
         return $books->with('category')->get();
     }
 
