@@ -1,5 +1,5 @@
 <x-layout>
-    <section class="relative flex flex-col gap-[5.65rem] items-center w-full p-3 lg:py-[8.98rem] pt-[14rem]">
+    <section class="relative flex flex-col gap-[5.65rem] items-center w-full p-3 lg:py-[12.98rem] pt-[14rem]">
         <div
             class="adaptive items-center justify-between w-full max-w-[calc(100%-3.42rem)] lg:max-w-[calc(100%-17.97rem)] gap-3">
             <form method="GET" action="{{ route('books.index') }}" class="relative w-full">

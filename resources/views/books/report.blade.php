@@ -43,7 +43,7 @@
                         <td class="p-3 border-b">{{ $book->title }}</td>
                         <td class="p-3 border-b">{{ $book->author }}</td>
                         <td class="p-3 border-b">{{ $book->publication_year }}</td>
-                        <td class="p-3 border-b {{ $book->price > 30 ? 'text-red-600 font-bold' : '' }}">${{ $book->price }}
+                        <td class="p-3 border-b {{ $book->price > 30 ? 'text-red-600 font-bold' : '' }}">₽{{ $book->price }}
                         </td>
                         <td
                             class="p-3 border-b {{ $book->sales_count > 100 ? 'bg-green-100 text-green-800 font-semibold px-2 rounded' : '' }}">

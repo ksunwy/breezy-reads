@@ -40,7 +40,7 @@
                             <td class="py-[1.5rem] text-[1.37rem]">{{ $user->name }}</td>
                             <td class="py-[1.5rem] text-[1.37rem]">{{ $user->email }}</td>
                             <td class="py-[1.5rem] text-[1.37rem]">{{ $user->role }}</td>
-                            <td class="py-[1.5rem] text-[1.37rem]">{{ $user->registration_date }}</td>
+                            <td class="py-[1.5rem] text-[1.37rem]">{{ $user->registered_at }}</td>
                             <td class="py-[1.5rem] text-[1.37rem]">
                                 @auth
                                     @if(auth()->user() && auth()->user()->role === 'Администратор')

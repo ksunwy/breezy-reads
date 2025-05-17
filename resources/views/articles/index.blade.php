@@ -20,7 +20,7 @@
                 <p class="text-center py-4 text-[1.54rem]">Статьи не найдены.</p>
             @else
                 @foreach ($articles as $i)
-                    <div onclick="window.location='{{ url('/article/' . $i->id) }}'" class="relative bg-[#DED2F9] rounded-[1.71rem] py-[1.71rem] px-[2.14rem] flex flex-col gap-[3.42rem]">
+                    <div onclick="window.location='{{ url('/article/' . $i->id) }}'" class="relative bg-[#DED2F9] rounded-[1.71rem] py-[1.71rem] px-[2.14rem] flex flex-col gap-[3.42rem] mx-4">
                         <img src="{{ $i->image_url }}" alt="{{ $i->title }}" class="w-[38.18rem] h-[19.34rem] flex mx-auto">
                         <div class="flex flex-col justify-between h-full gap-[1.23rem]">
                             <div class="flex flex-col gap-[5px] max-w-[36.21rem]">
